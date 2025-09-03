@@ -48,7 +48,7 @@
                                     <input class="form-check-input" type="radio" name="tipe_santri" id="tipe_baru" value="Baru" checked onchange="toggleKelas()">
                                     <label class="form-check-label" for="tipe_baru">Santri Baru</label>
                                 </div>
-                                <div class="form-check form-check-inline">
+                                <div class="form-check form-check-inline" id="pindahan_container">
                                     <input class="form-check-input" type="radio" name="tipe_santri" id="tipe_pindahan" value="Pindahan" onchange="toggleKelas()">
                                     <label class="form-check-label" for="tipe_pindahan">Santri Pindahan</label>
                                 </div>
@@ -59,7 +59,12 @@
                             <label class="col-sm-3 col-form-label">Kelas</label>
                             <div class="col-sm-9">
                                 <select name="kelas" id="kelas" class="form-select" required>
-                                    <option value="1">Kelas I (Satu)</option>
+                                    @if(session('jenjang') == 'KAUD')
+                                        <option value="A">Kelas A</option>
+                                        <option value="B">Kelas B</option>
+                                    @else    
+                                        <option value="1">Kelas I (Satu)</option>
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -393,17 +398,32 @@
     function toggleKelas() {
         const tipeSantri = document.querySelector('input[name="tipe_santri"]:checked').value;
         const kelasSelect = document.getElementById('kelas');
+        const jenjang = "{{ session('jenjang') }}";
         
         kelasSelect.innerHTML = '';
         
-        if (tipeSantri === 'Baru') {
-            kelasSelect.innerHTML = '<option value="1">Kelas I (Satu)</option>';
+        if (jenjang === 'KAUD') {
+            kelasSelect.innerHTML = '<option value="A">Kelas A</option>' +
+                                    '<option value="B">Kelas B</option>';
         } else {
-            kelasSelect.innerHTML = '<option value="2">Kelas II (Dua)</option>' +
-                                   '<option value="3">Kelas III (Tiga)</option>' +
-                                   '<option value="4">Kelas IV (Empat)</option>';
+            if (tipeSantri === 'Baru') {
+                kelasSelect.innerHTML = '<option value="1">Kelas I (Satu)</option>';
+            } else {
+                kelasSelect.innerHTML = '<option value="2">Kelas II (Dua)</option>' +
+                                        '<option value="3">Kelas III (Tiga)</option>' +
+                                        '<option value="4">Kelas IV (Empat)</option>';            
+            }
         }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const jenjang = "{{ session('jenjang') }}";
+        if (jenjang === 'KAUD') {
+            document.getElementById('tipe_pindahan').parentElement.style.display = 'none';
+            document.getElementById('tipe_baru').checked = true;
+            toggleKelas();
+        }
+    });
     
     function hitungUsia() {
         const tanggalLahir = new Date(document.querySelector('input[name="tanggal_lahir"]').value);

@@ -53,7 +53,7 @@ class PendaftaranController extends Controller
         $validator = Validator::make($request->all(), [
             'gelombang_id' => 'required|exists:gelombangs,id',
             'tipe_santri' => 'required|in:Baru,Pindahan',
-            'kelas' => 'required|integer',
+            'kelas' => 'required|string',
             'nama_lengkap' => 'required|string|max:255|regex:/^[A-Z\s]+$/',
             'nama_panggilan' => 'required|string|max:100|regex:/^[A-Z\s]+$/',
             'jenis_kelamin_santri' => 'required|in:Laki-laki,Perempuan',
@@ -133,7 +133,8 @@ class PendaftaranController extends Controller
 
         $nomorRegistrasi = Pendaftaran::generateNomorRegistrasi(
             $request->gelombang_id, 
-            $request->kelas
+            $request->kelas,
+            session('jenjang')
         );
 
         $tanggalLahir = Carbon::parse($request->tanggal_lahir);
