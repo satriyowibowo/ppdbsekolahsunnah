@@ -33,7 +33,7 @@
                     </div>
                     
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="status" name="status" 
+                        <input type="checkbox" class="form-check-input" id="status" name="status" value="1"
                                {{ old('status', isset($gelombang) && $gelombang->status ? 'checked' : '') }}>
                         <label class="form-check-label" for="status">Aktif</label>
                     </div>
