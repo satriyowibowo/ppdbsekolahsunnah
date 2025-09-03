@@ -27,7 +27,8 @@ class GelombangController extends Controller
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'required|date|after:tanggal_mulai'
         ]);
-        
+        $status = $request->has('status') ? 1 : 0;
+
         Gelombang::create([
                 'nomor_gelombang' => $request->nomor_gelombang,
                 'tanggal_mulai' => $request->tanggal_mulai,
@@ -51,6 +52,8 @@ class GelombangController extends Controller
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'required|date|after:tanggal_mulai'
         ]);
+        
+        $status = $request->has('status') ? 1 : 0;
         
         $gelombang->update([
                 'nomor_gelombang' => $request->nomor_gelombang,
