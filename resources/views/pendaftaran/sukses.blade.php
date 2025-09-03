@@ -7,8 +7,8 @@
             <div class="card-header text-center bg-success text-white">
                 <h3>Pendaftaran Berhasil!</h3>
             </div>
-            <div class="card-body text-center">
-                <div class="alert alert-success">
+            <div class="card-body">
+                <div class="alert alert-success text-center">
                     <h4>Nomor Registrasi: {{ $pendaftaran->nomor_registrasi }}</h4>
                 </div>
                 

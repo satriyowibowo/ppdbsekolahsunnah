@@ -33,13 +33,23 @@ class Pendaftaran extends Model
         return $this->belongsTo(Gelombang::class);
     }
     
-    public static function generateNomorRegistrasi($gelombangId, $kelas)
+    public static function generateNomorRegistrasi($gelombangId, $kelas, $jenjang)
     {
         $gelombang = Gelombang::find($gelombangId);
         $tahunAjaran = now()->format('y') . (now()->format('y') + 1);
-        $nomorUrut = Pendaftaran::count() + 1;
+        $nomorUrut = Pendaftaran::where('gelombang_id', $gelombangId)->count() + 1;
+
+        $kodeJenjang = $jenjang == 'KAUD' ? 'R' : 'K';
+
+        $kodeKelas = $jenjang == 'KAUD' ?
+                    ($kelas == 'A' ? '1' : '2') :
+                    $kelas;
         
-        return $tahunAjaran . 'G' . $gelombang->nomor_gelombang . $kelas . str_pad($nomorUrut, 3, '0', STR_PAD_LEFT);
+        return $tahunAjaran . 
+            'G' . $gelombang->nomor_gelombang . 
+            $kodeJenjang .
+            $kodeKelas . 
+            str_pad($nomorUrut, 3, '0', STR_PAD_LEFT);
     }
     
     public static function hitungUsia($tanggalLahir)

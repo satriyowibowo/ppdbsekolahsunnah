@@ -137,7 +137,13 @@
             <th>Gelombang</th>
             <td>Gelombang {{ $pendaftaran->gelombang->nomor_gelombang }}</td>
             <th>Kelas</th>
-            <td>Kelas {{ $pendaftaran->kelas }}</td>
+            <td>
+                @if($pendaftaran->jenjang == 'KAUD')
+                    Kelas {{ $pendaftaran->kelas }}
+                @else
+                    Kelas {{ $pendaftaran->kelas }}
+                @endif    
+            </td>
         </tr>
     </table>
 
@@ -304,22 +310,22 @@
             Jl. Delima V Blok D14<br>
             Teluk Pucung, Bekasi Utara<br>
             Kota Bekasi, Jawa Barat<br>
-            <strong>Kode Pos: 17125</strong>
+            <strong>Kode Pos: 17121</strong>
         </p>
         <p>
             <strong>Informasi Kontak:</strong><br>
-            Telepon: (021) 8888-8888<br>
-            WhatsApp: 0812-3456-7890<br>
-            Email: ppdb@miftahukhairilummah.sch.id
+            WhatsApp: 081 511 333 511 (Yayasan RISTAWA)<br>
+            WhatsApp: 0851 7343 5658 (Administrasi/Tata Usaha)<br>
+            Email: ppdb@mku.or.id
         </p>
         <p>
             <strong>Jam Operasional:</strong><br>
-            Senin - Jumat: 08.00 - 15.00 WIB<br>
-            Sabtu: 08.00 - 12.00 WIB<br>
+            Senin - Jumat: 08.00 - 14.00 WIB<br>
+            Sabtu: 08.00 - 11.00 WIB<br>
             Minggu: Libur
         </p>
     </div>
-    
+
     <div class="clearfix">
         <div class="ttd-area">
             <p>Hormat kami,</p>
