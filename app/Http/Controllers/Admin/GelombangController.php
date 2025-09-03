@@ -28,8 +28,13 @@ class GelombangController extends Controller
             'tanggal_selesai' => 'required|date|after:tanggal_mulai'
         ]);
         
-        Gelombang::create($request->all());
-        
+        Gelombang::create([
+                'nomor_gelombang' => $request->nomor_gelombang,
+                'tanggal_mulai' => $request->tanggal_mulai,
+                'tanggal_selesai' => $request->tanggal_selesai,
+                'status' => $status,
+        ]);
+
         return redirect()->route('admin.gelombang.index')
             ->with('success', 'Gelombang pendaftaran berhasil ditambahkan');
     }
@@ -47,7 +52,13 @@ class GelombangController extends Controller
             'tanggal_selesai' => 'required|date|after:tanggal_mulai'
         ]);
         
-        $gelombang->update($request->all());
+        $gelombang->update([
+                'nomor_gelombang' => $request->nomor_gelombang,
+                'tanggal_mulai' => $request->tanggal_mulai,
+                'tanggal_selesai' => $request->tanggal_selesai,
+                'status' => $status,
+        ]);
+
         
         return redirect()->route('admin.gelombang.index')
             ->with('success', 'Gelombang berhasil diperbarui');

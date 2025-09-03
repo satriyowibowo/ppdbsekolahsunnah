@@ -90,6 +90,33 @@
                 margin: 0;
             }
         }
+        .persyaratan {
+            margin-top: 30px;
+            padding: 15px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .persyaratan h4 {
+            margin-top: 0;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+        }
+        
+        .alamat {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #f0f8ff;
+        }
+        
+        .alamat h4 {
+            margin-top: 0;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+        }        
     </style>
 </head>
 <body>
@@ -252,7 +279,47 @@
         </tr>
         @endif
     </table>
+    <div class="persyaratan">
+        <h4>PERSYARATAN DOKUMEN YANG HARUS DISERAHKAN</h4>
+        <p>Calon peserta didik wajib menyerahkan dokumen berikut:</p>
+        <ol>
+            <li>Fotokopi Kartu Keluarga (KK) 2 lembar</li>
+            <li>Fotokopi Akta Kelahiran 2 lembar</li>
+            <li>Fotokopi KTP Orang Tua 2 lembar</li>
+            @if($pendaftaran->status_orang_tua === 'Hanya Ibu' || $pendaftaran->status_orang_tua === 'Tidak Keduanya')
+            <li>Akta Kematian Ayah (bagi yatim) 2 lembar</li>
+            @endif
+            <li>Pas foto 3x4 (yang telah diupload)</li>
+            <li>Bukti transfer formulir (yang telah diupload)</li>
+        </ol>
+    </div>
 
+    <div class="alamat">
+        <h4>ALAMAT PENYERAHAN DOKUMEN</h4>
+        <p>Serahkan dokumen persyaratan tersebut ke:</p>
+        <p>
+            <strong>Panitia PPDB Miftahu Khairil Ummah</strong><br>
+            Ruang Kantor Ikhwan Miftahu Khairil Ummah<br>
+            Taman Wisma Asri II<br>
+            Jl. Delima V Blok D14<br>
+            Teluk Pucung, Bekasi Utara<br>
+            Kota Bekasi, Jawa Barat<br>
+            <strong>Kode Pos: 17125</strong>
+        </p>
+        <p>
+            <strong>Informasi Kontak:</strong><br>
+            Telepon: (021) 8888-8888<br>
+            WhatsApp: 0812-3456-7890<br>
+            Email: ppdb@miftahukhairilummah.sch.id
+        </p>
+        <p>
+            <strong>Jam Operasional:</strong><br>
+            Senin - Jumat: 08.00 - 15.00 WIB<br>
+            Sabtu: 08.00 - 12.00 WIB<br>
+            Minggu: Libur
+        </p>
+    </div>
+    
     <div class="clearfix">
         <div class="ttd-area">
             <p>Hormat kami,</p>
