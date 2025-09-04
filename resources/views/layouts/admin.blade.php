@@ -21,6 +21,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.gelombang.index') }}">Kelola Gelombang</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.pendaftaran.index') }}">Daftar Pendaftaran</a>
+                    </li>
                 </ul>
             </div>
         </div>

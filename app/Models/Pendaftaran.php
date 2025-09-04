@@ -26,7 +26,7 @@ class Pendaftaran extends Model
         'nisn'
     ];
 
-    protected $dates = ['tanggal_lahir'];
+    protected $casts = ['tanggal_lahir' => 'date',];
     
     public function gelombang()
     {
