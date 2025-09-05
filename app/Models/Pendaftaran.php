@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 class Pendaftaran extends Model
 {
     protected $table = 'pendaftarans';
+
     protected $fillable = [
         'uuid',
         'nomor_registrasi', 'gelombang_id', 'jenjang', 'jenis_kelamin',
@@ -26,7 +27,9 @@ class Pendaftaran extends Model
         'nisn'
     ];
 
-    protected $dates = ['tanggal_lahir'];
+    protected $casts = [
+        'tanggal_lahir' => 'date',
+    ];
     
     public function gelombang()
     {
@@ -46,7 +49,7 @@ class Pendaftaran extends Model
                     $kelas;
         
         return $tahunAjaran . 
-            'G' . $gelombang->nomor_gelombang . 
+            'G' . $gelombang?->nomor_gelombang . 
             $kodeJenjang .
             $kodeKelas . 
             str_pad($nomorUrut, 3, '0', STR_PAD_LEFT);
